@@ -84,35 +84,15 @@ def predict_proba_with_tta(X_test, model, num_iteration, alpha = 0.01, n = 4, se
 #                             #
 ###############################
 
-# performs dummy or label encoding
-import pandas as pd
-def encode_factors(df, method = "label", skip = None):
-    
-    # select columns 
-    factors = [f for f in df.columns if df[f].dtype == "object"]
-    factors = [f for f in factors if f not in skip]
-    
-    # label encoding
-    if method == "label":
-        for var in factors:
-            df[var], _ = pd.factorize(df[var])
-        
-    # dummy encoding
-    if method == "dummy":
-        df = pd.get_dummies(df, drop_first = True, columns = factors)
-    
-    # dataset
-    return df
-
-
 # performs label encoding
 from sklearn.preprocessing import LabelEncoder
 def label_encoding(df_train, df_valid, df_test):
     
     factors = [f for f in df_train.columns if df_train[f].dtype == 'object' or df_valid[f].dtype == 'object' or df_test[f].dtype == 'object']
     
-    for f in factors:
-        lbl = LabelEncoder()
+    lbl = LabelEncoder()
+
+    for f in factors:        
         lbl.fit(list(df_train[f].values) + list(df_valid[f].values) + list(df_test[f].values))
         df_train[f] = lbl.transform(list(df_train[f].values))
         df_valid[f] = lbl.transform(list(df_valid[f].values))
@@ -165,6 +145,7 @@ def aggregate_data(df, group_var, num_stats = ['mean', 'sum'], factors = None, v
     # find factors
     if factors == None:
         df_factors = [f for f in df.columns if df[f].dtype == "object"]
+        factors    = [f for f in df_factors if f != group_var]
     else:
         df_factors = factors
         df_factors.append(group_var)
