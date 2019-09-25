@@ -140,7 +140,7 @@ def aggregate_data(df, group_var, num_stats = ['mean', 'sum'], factors = None, v
     ### SEPARATE FEATURES
   
     # display info
-    print("- Preparing the dataset...")
+    #print("- Preparing the dataset...")
 
     # find factors
     if factors == None:
