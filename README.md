@@ -7,13 +7,15 @@ Top-3% solution to the [IEEE-CIS Fraud Detection](https://www.kaggle.com/c/ieee-
 
 ## Summary
 
-This project works with a large data set containing the telescope data from different astronomical sources such as planets, supernovae and others. Using the time series of the objects brightness referred to as light curves and available object meta-data, we preprocess the data and build a classification pipeline with LightGBM and MLP models. Our solution represents a stacking ensemble of multiple base models for galactic and extragalactic objects. The reaches the top-2% of the corresponding Kaggle competition leaderboard.
+Fraud detection is an important task for many businesses. Models that facilitate the accurate classification of potential fraud helps companies to reduce their fraud loss and increase revenue.
+
+This project works with a large-scale e-commerce dataset to identify fraudulent transactions. The data contains a wide range of features from device type to product features. We perform extensive feature engineering and develop a stacking ensemble of multiple LightGBM models. The solution reaches the top-2% of the Kaggle competition leaderboard. More details are provided within the notebooks documentation.
 
 
 ## Project structure
 
 The project has the following structure:
-- `codes/`:  Jupyter notebooks with Python codes for data preparation, modeling and ensembling
+- `codes/`:  Jupyter notebooks and Python codes for data preparation, modeling and ensembling
 - `data/`: input data (not included due to size constraints and can be downloaded [here](https://www.kaggle.com/c/ieee-fraud-detection/data))
 - `output/`: figures produced when executing the modeling notebooks
 - `oof_preds/`: out-of-fold predictions produced models within the cross-validation
